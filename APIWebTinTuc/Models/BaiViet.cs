@@ -9,7 +9,7 @@ namespace APIWebTinTuc.Models
         public string ChuDe { get; set; }
         public string NoiDung { get; set; }
         public string GhiChu { get; set; } 
-        public string TheLoai { get; set; }
+        public int TheLoai { get; set; }
     }
 
     public class BaiViet : BaiVietND

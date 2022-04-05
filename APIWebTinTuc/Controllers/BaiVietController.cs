@@ -50,7 +50,8 @@ namespace APIWebTinTuc.Controllers
                 NoiDung = baivietnd.NoiDung,
                 ChuDe = baivietnd.ChuDe,
                 GhiChu = baivietnd.GhiChu,
-                TheLoai = int.Parse(baivietnd.TheLoai)
+                //TheLoai = baivietnd.TheLoai
+                TheLoai = baivietnd.TheLoai
             };
             _context.Add(baiviet);
             _context.SaveChanges();
@@ -79,7 +80,8 @@ namespace APIWebTinTuc.Controllers
             baiviet.NoiDung = editBV.NoiDung;
             baiviet.ChuDe = editBV.ChuDe;
             baiviet.GhiChu = editBV.GhiChu;
-            baiviet.TheLoai = int.Parse(editBV.TheLoai);
+            baiviet.TheLoai = editBV.TheLoai;
+            //baiviet.TheLoai = editBV.TheLoai;
             _context.SaveChanges();
             return Ok();
         }

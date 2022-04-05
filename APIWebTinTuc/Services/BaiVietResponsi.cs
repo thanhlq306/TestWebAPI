@@ -8,7 +8,7 @@ namespace APIWebTinTuc.Services
         List<BaiVietVM> GetAll();
         BaiVietVM GetById(string id);
         BaiVietVM Add(BaiViet bv);
-        void Update(BaiViet bv);
+        void Update(BaiVietVM bv);
         void Del(string id);
     }
 }

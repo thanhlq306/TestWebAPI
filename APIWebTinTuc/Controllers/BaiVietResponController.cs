@@ -55,7 +55,7 @@ namespace APIWebTinTuc.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Edit(string id, BaiViet editBV)
+        public IActionResult Edit(string id, BaiVietVM editBV)
         {
 
             if (id.Equals(editBV.MaBaiViet))

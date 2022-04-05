@@ -24,13 +24,14 @@ namespace APIWebTinTuc.Services
                 NoiDung = bv.NoiDung,
                 ChuDe = bv.ChuDe,
                 GhiChu = bv.GhiChu,
-                TheLoai = int.Parse(bv.TheLoai)
+                TheLoai = bv.TheLoai
             };
             _context.Add(_bv);
             _context.SaveChanges();
 
             return new BaiVietVM
             {
+                
                 TenBaiViet = _bv.TenBaiViet,
                 TenTacGia = _bv.TenTacGia,
                 NoiDung = _bv.NoiDung,
@@ -84,7 +85,7 @@ namespace APIWebTinTuc.Services
             return null;
         }
 
-        public void Update(BaiViet bv)
+        public void Update(BaiVietVM bv)
         {
             var _bv = _context.dataBaiViets.SingleOrDefault(bb => bb.MaBaiViet == bv.MaBaiViet);
             _bv.TenBaiViet = bv.TenBaiViet;
@@ -92,7 +93,7 @@ namespace APIWebTinTuc.Services
             _bv.NoiDung = bv.NoiDung;
             _bv.ChuDe = bv.ChuDe;
             _bv.GhiChu = bv.GhiChu;
-            _bv.TheLoai = int.Parse(bv.TheLoai);
+            _bv.TheLoai = bv.TheLoai;
             _context.SaveChanges();
         }
     }
