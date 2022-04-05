@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7Y0FOSA59o8QqdKl1d+dR8IPfwsTGo4ZJPfFOANSLS7ktt0oirFm9spYdQW3Yl7AtFajazEZo1XPuh/nidYdtg==",
+  "dgSpecHash": "acFoKEf8JWrsIEEywEAyIjwBeC2SujXf4JqhSz+IxWL6WtS2IzwTqBcGLIzQSU3FpmBzoBkaP4muQDKlI6bmaw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\admin\\Documents\\TestWeb\\APIWebTinTuc\\APIWebTinTuc\\APIWebTinTuc.csproj",
+  "projectFilePath": "C:\\Users\\admin\\Documents\\TestWeb\\APIWebTinTuc\\TestWebAPI\\APIWebTinTuc\\APIWebTinTuc.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\admin\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\5.0.15\\microsoft.aspnetcore.authentication.jwtbearer.5.0.15.nupkg.sha512",

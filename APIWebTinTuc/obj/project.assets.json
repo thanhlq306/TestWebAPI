@@ -7341,11 +7341,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\admin\\Documents\\TestWeb\\APIWebTinTuc\\APIWebTinTuc\\APIWebTinTuc.csproj",
+      "projectUniqueName": "C:\\Users\\admin\\Documents\\TestWeb\\APIWebTinTuc\\TestWebAPI\\APIWebTinTuc\\APIWebTinTuc.csproj",
       "projectName": "APIWebTinTuc",
-      "projectPath": "C:\\Users\\admin\\Documents\\TestWeb\\APIWebTinTuc\\APIWebTinTuc\\APIWebTinTuc.csproj",
+      "projectPath": "C:\\Users\\admin\\Documents\\TestWeb\\APIWebTinTuc\\TestWebAPI\\APIWebTinTuc\\APIWebTinTuc.csproj",
       "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\admin\\Documents\\TestWeb\\APIWebTinTuc\\APIWebTinTuc\\obj\\",
+      "outputPath": "C:\\Users\\admin\\Documents\\TestWeb\\APIWebTinTuc\\TestWebAPI\\APIWebTinTuc\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
