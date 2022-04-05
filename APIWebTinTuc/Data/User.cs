@@ -14,7 +14,7 @@ namespace APIWebTinTuc.Data
         [Required]
         [MaxLength(100)]
         public string PassWord { get; set; }
-        public string HotTen { get; set; }
+        public string HoTen { get; set; }
         public string Email { get; set; }
         
 

@@ -28,7 +28,7 @@ namespace APIWebTinTuc.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     PassWord = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    HotTen = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    HoTen = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Email = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
                 },
                 constraints: table =>

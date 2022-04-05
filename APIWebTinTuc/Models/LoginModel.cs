@@ -8,7 +8,7 @@ namespace APIWebTinTuc.Models
         [MaxLength(50)]
         public string UserName { get; set; }
         [Required]
-        [MaxLength(250)]
+        [MaxLength(100)]
         public string Password { get; set; }
     }
 }
