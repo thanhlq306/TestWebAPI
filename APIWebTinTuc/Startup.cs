@@ -81,6 +81,8 @@ namespace APIWebTinTuc
 
             app.UseRouting();
 
+            app.UseAuthentication();
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
