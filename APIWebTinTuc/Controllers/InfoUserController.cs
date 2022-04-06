@@ -3,48 +3,52 @@ using APIWebTinTuc.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
+// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+
 namespace APIWebTinTuc.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BaiVietResponController : ControllerBase
+    public class InfoUserController : ControllerBase
     {
-        private readonly BaiVietResponsi _BVInterface;
+        private readonly InfoUserResponsi _infoUserResponsi;
 
-        public BaiVietResponController(BaiVietResponsi BVResponsi)
+        // GET: api/<InfoUserController>
+
+        public InfoUserController(InfoUserResponsi infoUserResponsi)
         {
-            _BVInterface = BVResponsi;
+            _infoUserResponsi = infoUserResponsi;
         }
+
         [HttpGet]
         public IActionResult GetAll()
         {
-            return Ok(_BVInterface.GetAll());
+            return Ok(_infoUserResponsi.GetAll());
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetById(string id)
+        public IActionResult GetByID(int id)
         {
             try
             {
-                var dsBV = _BVInterface.GetById(id);
-                if (dsBV == null)
+                var dsUS = _infoUserResponsi.GetById(id);
+                if (dsUS == null)
                 {
                     return NotFound();
                 }
-                return Ok(dsBV);
+                return Ok(dsUS);
             }
             catch
             {
                 return StatusCode(StatusCodes.Status500InternalServerError);
             }
         }
-
-        [HttpPost]
-        public IActionResult Create(BaiViet baiviet)
+            [HttpPost]
+        public IActionResult Create(UserModel us)
         {
             try
             {
-                return Ok(_BVInterface.Add(baiviet));
+                return Ok(_infoUserResponsi.Add(us));
 
             }
             catch
@@ -54,17 +58,16 @@ namespace APIWebTinTuc.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Edit(string id, BaiVietVM editBV)
+        public IActionResult Edit(int id, UserModel us)
         {
-
-            if (id.Equals(editBV.MaBaiViet))
+            if (id == us.Id)
             {
                 return BadRequest();
             }
             try
             {
 
-                _BVInterface.Update(editBV);
+                _infoUserResponsi.Update(us);
                 return StatusCode(StatusCodes.Status200OK);
             }
             catch
@@ -74,12 +77,11 @@ namespace APIWebTinTuc.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Delete(string id)
+        public IActionResult Del(int id)
         {
-
             try
             {
-                _BVInterface.Del(id);
+                _infoUserResponsi.Del(id);
                 return Ok();
             }
             catch

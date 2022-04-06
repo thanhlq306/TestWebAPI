@@ -42,6 +42,8 @@ namespace APIWebTinTuc
 
             services.AddScoped<LoaiBVResponsi, LoaiBVsResponsi>();
             services.AddScoped<BaiVietResponsi, BaiVietsResponsi>();
+            services.AddScoped<InfoUserResponsi, InfoUsersResponsi>();
+
             services.Configure<Appsetting>(Configuration.GetSection("Appsettings"));
 
             var secretKey = Configuration["AppSettings:SecretKey"];
