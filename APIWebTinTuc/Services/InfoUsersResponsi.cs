@@ -22,8 +22,8 @@ namespace APIWebTinTuc.Services
             var _us = new User()
             {
                 UserName = us.UserName,
-                PassWord = MD5Security(us.PassWord),
-                //PassWord = us.PassWord,
+                //PassWord = MD5Security(us.PassWord),
+                PassWord = Sha256Crypt(us.PassWord),
                 HoTen = us.HoTen,
                 Email = us.Email
             };
@@ -39,21 +39,36 @@ namespace APIWebTinTuc.Services
             };
         }
 
-        private string MD5Security(string passWord)
-        {
-            MD5 mh = MD5.Create();
-            //Chuyển kiểu chuổi thành kiểu byte
-            byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(passWord);
-            //mã hóa chuỗi đã chuyển
-            byte[] hash = mh.ComputeHash(inputBytes);
-            //tạo đối tượng StringBuilder (làm việc với kiểu dữ liệu lớn)
-            StringBuilder sb = new StringBuilder();
+        //private string MD5Security(string passWord)
+        //{
+        //    MD5 mh = MD5.Create();
+        //    //Chuyển kiểu chuổi thành kiểu byte
+        //    byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(passWord);
+        //    //mã hóa chuỗi đã chuyển
+        //    byte[] hash = mh.ComputeHash(inputBytes);
+        //    //tạo đối tượng StringBuilder (làm việc với kiểu dữ liệu lớn)
+        //    StringBuilder sb = new StringBuilder();
 
-            for (int i = 0; i < hash.Length; i++)
+        //    for (int i = 0; i < hash.Length; i++)
+        //    {
+        //        sb.Append(hash[i].ToString("X2"));
+        //    }
+        //    return sb.ToString();
+        //}
+
+        public string Sha256Crypt(string data)
+        {
+            
+            using (SHA256 sha256Hash = SHA256.Create())
             {
-                sb.Append(hash[i].ToString("X2"));
+                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(data));  
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2"));
+                }
+                return builder.ToString();
             }
-            return sb.ToString();
         }
 
         public void Del(int id)
@@ -99,7 +114,8 @@ namespace APIWebTinTuc.Services
         {
             var _us = _context.dataUsers.SingleOrDefault(uss => uss.Id == us.Id);
             _us.UserName = us.UserName;
-            _us.PassWord = MD5Security(us.PassWord);
+            //_us.PassWord = MD5Security(us.PassWord);
+            _us.PassWord = Sha256Crypt(us.PassWord);
             _us.HoTen = us.HoTen;
             _us.Email = us.Email;
 
