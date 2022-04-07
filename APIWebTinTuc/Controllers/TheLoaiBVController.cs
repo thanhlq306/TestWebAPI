@@ -56,7 +56,7 @@ namespace APIWebTinTuc.Controllers
         }
 
         [HttpPost]
-        //[Authorize]
+        [Authorize]
         public IActionResult CreateLoai(Loai model)
         {
             try

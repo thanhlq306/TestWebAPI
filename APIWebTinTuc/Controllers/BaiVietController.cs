@@ -11,6 +11,7 @@ namespace APIWebTinTuc.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    
     public class BaiVietController : ControllerBase
     {
         private readonly MyDBcontext _context;
