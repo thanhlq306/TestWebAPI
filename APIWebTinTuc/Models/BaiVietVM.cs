@@ -12,4 +12,5 @@ namespace APIWebTinTuc.Models
         public string GhiChu { get; set; }
         public int TheLoai { get; set; }
     }
+    
 }

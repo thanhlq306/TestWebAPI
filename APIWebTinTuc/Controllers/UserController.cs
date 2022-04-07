@@ -9,6 +9,7 @@ using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace APIWebTinTuc.Controllers
@@ -43,11 +44,11 @@ namespace APIWebTinTuc.Controllers
             {
                 Success = true,
                 Message = "Truy cập thành công!",
-                Data = GenerateToken(user)
+                TokenID = GenerateToken(user)
             }) ;
         }
 
-        private string GenerateToken(User user)
+        private TokenModel GenerateToken(User user)
         {
             var jwtTokenHandler = new JwtSecurityTokenHandler();
             var secretKeyBytes = Encoding.UTF8.GetBytes(_appsetting.SecretKey);
@@ -56,18 +57,42 @@ namespace APIWebTinTuc.Controllers
                 Subject = new ClaimsIdentity(new[]
                 {
                     new Claim(ClaimTypes.Name,user.HoTen),
-                    new Claim(ClaimTypes.Email,user.Email),
+                    new Claim(JwtRegisteredClaimNames.Email,user.Email),
+                    new Claim(JwtRegisteredClaimNames.Jti,Guid.NewGuid().ToString()),
                     new Claim("UserName",user.UserName),
                     new Claim("Id",user.Id.ToString()),
 
-                    //new Claim("TokenId", Guid.NewGuid().ToString())
+                    
                 }),
                 Expires = DateTime.UtcNow.AddMinutes(20),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(secretKeyBytes),
                                                             SecurityAlgorithms.HmacSha512Signature)
             };
             var token = jwtTokenHandler.CreateToken(tokenDesciption);
-            return jwtTokenHandler.WriteToken(token);
+
+            var accessToken =  jwtTokenHandler.WriteToken(token);
+            var refreshtoken = GenerateRefreshToken();
+
+            //save database
+
+
+
+
+            return new TokenModel
+            {
+                AccessToken = accessToken,
+                RefreshToken = refreshtoken
+            };
+        }
+
+        private string GenerateRefreshToken()
+        {
+            var bytes = new byte[32];
+            using (var rng = RandomNumberGenerator.Create())
+            {
+                rng.GetBytes(bytes);
+                return Convert.ToBase64String(bytes);
+            }
         }
     }
 }

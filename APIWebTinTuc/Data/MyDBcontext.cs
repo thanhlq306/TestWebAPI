@@ -7,6 +7,7 @@ namespace APIWebTinTuc.Data
         public MyDBcontext(DbContextOptions options): base(options) { }
 
         #region DbSet
+        public DbSet<RefreshTokenID> RefreshTokenID { get; set; }
         public DbSet<DataBaiViet> dataBaiViets { get; set; }
         public DbSet<LoaiBaiViet> dataLoais { get; set; }
         public DbSet<User> dataUsers { get; set; }
